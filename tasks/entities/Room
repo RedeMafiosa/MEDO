@@ -1,0 +1,56 @@
+{
+  "name": "Room",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "default": "\ud83c\udfae"
+    },
+    "max_members": {
+      "type": "number",
+      "default": 50
+    },
+    "is_private": {
+      "type": "boolean",
+      "default": false
+    },
+    "password": {
+      "type": "string"
+    },
+    "owner_id": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "members_count": {
+      "type": "number",
+      "default": 0
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "gaming",
+        "music",
+        "talk",
+        "study",
+        "other"
+      ],
+      "default": "gaming"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "owner_name"
+  ]
+}

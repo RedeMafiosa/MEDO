@@ -1,0 +1,198 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0px;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 100%;
+    --card: 240 8% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 8% 7%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 74 100% 50%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 8% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 8% 15%;
+    --muted-foreground: 0 0% 62%;
+    --accent: 0 100% 57%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 8% 16%;
+    --input: 240 8% 16%;
+    --ring: 74 100% 50%;
+    --chart-1: 74 100% 50%;
+    --chart-2: 0 100% 57%;
+    --chart-3: 195 100% 60%;
+    --chart-4: 270 70% 65%;
+    --chart-5: 45 100% 55%;
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 74 100% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 240 8% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 8% 14%;
+    --sidebar-ring: 74 100% 50%;
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Courier New', monospace;
+  }
+
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  *::-webkit-scrollbar { width: 6px; background: transparent; }
+  *::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(74 100% 50%), hsl(195 100% 60%));
+  }
+  .neon-border {
+    border: 1px solid hsl(74 100% 50% / 0.5);
+    box-shadow: 0 0 8px hsl(74 100% 50% / 0.2);
+  }
+  .live-pulse {
+    animation: live-blink 1.5s ease-in-out infinite;
+  }
+  @keyframes live-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .stat-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* ── Admin member tag animations ─────────────────────────────────── */
+
+  /* RGB rainbow border — used for Fundador tag */
+  @keyframes rgb-border {
+    0%   { border-color: #ff0000; box-shadow: 0 0 8px 2px #ff000066, 0 0 2px #ff0000; }
+    14%  { border-color: #ff7700; box-shadow: 0 0 8px 2px #ff770066, 0 0 2px #ff7700; }
+    28%  { border-color: #ffff00; box-shadow: 0 0 8px 2px #ffff0066, 0 0 2px #ffff00; }
+    42%  { border-color: #00ff00; box-shadow: 0 0 8px 2px #00ff0066, 0 0 2px #00ff00; }
+    57%  { border-color: #00ffff; box-shadow: 0 0 8px 2px #00ffff66, 0 0 2px #00ffff; }
+    71%  { border-color: #0066ff; box-shadow: 0 0 8px 2px #0066ff66, 0 0 2px #0066ff; }
+    85%  { border-color: #cc00ff; box-shadow: 0 0 8px 2px #cc00ff66, 0 0 2px #cc00ff; }
+    100% { border-color: #ff0000; box-shadow: 0 0 8px 2px #ff000066, 0 0 2px #ff0000; }
+  }
+  .tag-rgb-border {
+    border-width: 1px;
+    border-style: solid;
+    animation: rgb-border 3s linear infinite;
+  }
+
+  /* RGB rainbow text — used inside Fundador tag */
+  @keyframes rgb-text {
+    0%   { color: #ff4444; }
+    14%  { color: #ff9900; }
+    28%  { color: #ffff00; }
+    42%  { color: #44ff44; }
+    57%  { color: #00ffff; }
+    71%  { color: #4488ff; }
+    85%  { color: #dd44ff; }
+    100% { color: #ff4444; }
+  }
+  .tag-rgb-text {
+    animation: rgb-text 3s linear infinite;
+  }
+
+  /* Gold shimmer — Admin tag */
+  @keyframes gold-shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .tag-gold {
+    background: linear-gradient(90deg, #b8860b 0%, #ffd700 30%, #fffacd 50%, #ffd700 70%, #b8860b 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gold-shimmer 2.5s linear infinite;
+  }
+  .tag-gold-border {
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 6px 1px #ffd70066, inset 0 0 6px #ffd70015;
+  }
+
+  /* Cyan neon pulse — Moderador tag */
+  @keyframes cyan-pulse {
+    0%, 100% { box-shadow: 0 0 6px 1px #00ffff55, 0 0 2px #00ffff; border-color: #00ffff; }
+    50%       { box-shadow: 0 0 14px 3px #00ffff88, 0 0 4px #00ffff; border-color: #00eeee; }
+  }
+  .tag-cyan {
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    animation: cyan-pulse 2s ease-in-out infinite;
+  }
+
+  /* Purple glow — VIP tag */
+  @keyframes purple-glow {
+    0%, 100% { box-shadow: 0 0 6px 1px #9b59b655; border-color: #9b59b6; }
+    50%       { box-shadow: 0 0 16px 4px #9b59b688; border-color: #bb77dd; }
+  }
+  .tag-vip {
+    border: 1px solid #9b59b6;
+    color: #cc88ff;
+    animation: purple-glow 2.2s ease-in-out infinite;
+  }
+
+  /* Pink glow — Booster tag */
+  @keyframes pink-glow {
+    0%, 100% { box-shadow: 0 0 5px 1px #ff69b455; border-color: #ff69b4; }
+    50%       { box-shadow: 0 0 12px 3px #ff69b477; border-color: #ff88cc; }
+  }
+  .tag-booster {
+    border: 1px solid #ff69b4;
+    color: #ff69b4;
+    animation: pink-glow 2.4s ease-in-out infinite;
+  }
+
+  /* Orange fire — OG tag */
+  @keyframes fire-flicker {
+    0%, 100% { box-shadow: 0 0 5px 1px #ff6a0055; border-color: #ff6a00; }
+    33%       { box-shadow: 0 0 12px 3px #ff6a0077; border-color: #ff8c00; }
+    66%       { box-shadow: 0 0 8px 2px #ff6a0066; border-color: #ee5a00; }
+  }
+  .tag-og {
+    border: 1px solid #ff6a00;
+    color: #ff8c00;
+    animation: fire-flicker 1.8s ease-in-out infinite;
+  }
+
+  /* Red neon — Dono tag */
+  @keyframes red-neon {
+    0%, 100% { box-shadow: 0 0 6px 2px #ff2a2a66, 0 0 2px #ff2a2a; border-color: #ff2a2a; }
+    50%       { box-shadow: 0 0 18px 5px #ff2a2a88, 0 0 4px #ff2a2a; border-color: #ff5555; }
+  }
+  .tag-dono {
+    border: 1px solid #ff2a2a;
+    color: #ff4444;
+    animation: red-neon 2s ease-in-out infinite;
+  }
+
+  /* Green neon — Streamer tag */
+  @keyframes green-neon {
+    0%, 100% { box-shadow: 0 0 5px 1px #00ff8855; border-color: #00ff88; }
+    50%       { box-shadow: 0 0 14px 3px #00ff8877; border-color: #00ffaa; }
+  }
+  .tag-streamer {
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    animation: green-neon 2.6s ease-in-out infinite;
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "SiteSettings",
+  "type": "object",
+  "properties": {
+    "site_name": {
+      "type": "string",
+      "default": "FlashStream"
+    },
+    "primary_color": {
+      "type": "string",
+      "default": "#8B5CF6"
+    },
+    "secondary_color": {
+      "type": "string",
+      "default": "#1E1B2E"
+    },
+    "background_color": {
+      "type": "string",
+      "default": "#0F0D1A"
+    },
+    "font_family": {
+      "type": "string",
+      "default": "Inter"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "favicon_url": {
+      "type": "string"
+    },
+    "maintenance_mode": {
+      "type": "boolean",
+      "default": false
+    },
+    "announcement": {
+      "type": "string"
+    },
+    "max_chat_length": {
+      "type": "number",
+      "default": 500
+    },
+    "allow_gifs": {
+      "type": "boolean",
+      "default": true
+    },
+    "allow_images": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "site_name"
+  ]
+}

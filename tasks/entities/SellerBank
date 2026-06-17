@@ -1,0 +1,29 @@
+{
+  "name": "SellerBank",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "number",
+      "default": 0,
+      "description": "Tokens pendentes para levantar"
+    },
+    "diamonds": {
+      "type": "number",
+      "default": 0,
+      "description": "Diamantes pendentes para levantar"
+    },
+    "gems": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "user_id"
+  ]
+}

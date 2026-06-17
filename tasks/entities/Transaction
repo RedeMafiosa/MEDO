@@ -1,0 +1,53 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "purchase",
+        "donation",
+        "reward",
+        "transfer",
+        "refund"
+      ]
+    },
+    "currency": {
+      "type": "string",
+      "enum": [
+        "tokens",
+        "diamonds",
+        "gems",
+        "eur"
+      ]
+    },
+    "amount": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "failed",
+        "refunded"
+      ],
+      "default": "completed"
+    },
+    "reference_id": {
+      "type": "string",
+      "description": "Related order/stream ID"
+    }
+  },
+  "required": [
+    "user_id",
+    "type",
+    "amount"
+  ]
+}

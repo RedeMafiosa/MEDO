@@ -1,0 +1,71 @@
+{
+  "name": "UserProfile",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "cover_url": {
+      "type": "string",
+      "description": "Profile cover image/GIF URL"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "xp": {
+      "type": "number",
+      "default": 0
+    },
+    "level": {
+      "type": "number",
+      "default": 1
+    },
+    "vip_tier": {
+      "type": "string",
+      "enum": [
+        "",
+        "bronze",
+        "silver",
+        "gold",
+        "platinum",
+        "diamond"
+      ],
+      "default": "",
+      "description": "Current VIP tier"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "total_messages": {
+      "type": "number",
+      "default": 0
+    },
+    "total_donations": {
+      "type": "number",
+      "default": 0
+    },
+    "is_online": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_id",
+    "username"
+  ]
+}

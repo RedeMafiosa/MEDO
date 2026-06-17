@@ -1,0 +1,59 @@
+{
+  "name": "VipPlan",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "bronze",
+        "silver",
+        "gold",
+        "platinum",
+        "diamond"
+      ]
+    },
+    "price_monthly": {
+      "type": "number"
+    },
+    "price_yearly": {
+      "type": "number"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "badge_color": {
+      "type": "string"
+    },
+    "max_emotes": {
+      "type": "number",
+      "default": 5
+    },
+    "ad_free": {
+      "type": "boolean",
+      "default": false
+    },
+    "priority_support": {
+      "type": "boolean",
+      "default": false
+    },
+    "exclusive_chat": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "tier",
+    "price_monthly"
+  ]
+}

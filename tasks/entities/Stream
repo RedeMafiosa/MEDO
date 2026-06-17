@@ -1,0 +1,86 @@
+{
+  "name": "Stream",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Stream title"
+    },
+    "streamer_name": {
+      "type": "string",
+      "description": "Streamer display name"
+    },
+    "streamer_avatar": {
+      "type": "string",
+      "description": "Streamer avatar URL"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "gaming",
+        "irl",
+        "music",
+        "creative",
+        "esports",
+        "talk_show",
+        "education",
+        "other"
+      ],
+      "default": "gaming"
+    },
+    "game": {
+      "type": "string",
+      "description": "Game being played"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Stream thumbnail URL"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Stream/video embed URL"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "live",
+        "offline",
+        "scheduled"
+      ],
+      "default": "offline"
+    },
+    "viewers": {
+      "type": "number",
+      "default": 0
+    },
+    "followers": {
+      "type": "number",
+      "default": 0
+    },
+    "total_views": {
+      "type": "number",
+      "default": 0
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "language": {
+      "type": "string",
+      "default": "pt"
+    }
+  },
+  "required": [
+    "title",
+    "streamer_name"
+  ]
+}

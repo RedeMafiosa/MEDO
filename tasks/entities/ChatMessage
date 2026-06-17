@@ -1,0 +1,62 @@
+{
+  "name": "ChatMessage",
+  "type": "object",
+  "properties": {
+    "stream_id": {
+      "type": "string",
+      "description": "ID of the stream this message belongs to"
+    },
+    "username": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "gif",
+        "image",
+        "emote",
+        "donation"
+      ],
+      "default": "text"
+    },
+    "media_url": {
+      "type": "string",
+      "description": "URL for gif/image attachments"
+    },
+    "donation_amount": {
+      "type": "number",
+      "description": "Donation amount in tokens"
+    },
+    "is_vip": {
+      "type": "boolean",
+      "default": false
+    },
+    "badge": {
+      "type": "string",
+      "enum": [
+        "none",
+        "mod",
+        "vip",
+        "subscriber",
+        "admin"
+      ],
+      "default": "none"
+    },
+    "color": {
+      "type": "string",
+      "description": "Username color"
+    }
+  },
+  "required": [
+    "stream_id",
+    "username",
+    "content"
+  ]
+}

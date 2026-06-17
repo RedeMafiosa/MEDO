@@ -1,0 +1,57 @@
+{
+  "name": "MarketEscrow",
+  "type": "object",
+  "properties": {
+    "listing_id": {
+      "type": "string",
+      "description": "ID do an\u00fancio no PlayerMarket"
+    },
+    "seller_id": {
+      "type": "string"
+    },
+    "seller_name": {
+      "type": "string"
+    },
+    "item_type": {
+      "type": "string",
+      "description": "token, diamond, gem, etc."
+    },
+    "item_name": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0
+    },
+    "price_total": {
+      "type": "number",
+      "default": 0,
+      "description": "Total de moedas que o comprador paga"
+    },
+    "pay_currency": {
+      "type": "string",
+      "enum": [
+        "tokens",
+        "diamonds",
+        "gems"
+      ],
+      "description": "Moeda de pagamento"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "held",
+        "sold",
+        "returned"
+      ],
+      "default": "held",
+      "description": "held=guardado, sold=vendido, returned=devolvido ao vendedor"
+    }
+  },
+  "required": [
+    "listing_id",
+    "seller_id",
+    "item_type",
+    "quantity"
+  ]
+}

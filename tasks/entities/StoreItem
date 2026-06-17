@@ -1,0 +1,59 @@
+{
+  "name": "StoreItem",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "tokens",
+        "diamonds",
+        "gems",
+        "vip",
+        "emotes",
+        "badges",
+        "themes"
+      ]
+    },
+    "price_eur": {
+      "type": "number"
+    },
+    "price_tokens": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Quantity of currency/item given"
+    },
+    "bonus_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Bonus amount"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "is_popular": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "discount_percent": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "category",
+    "price_eur"
+  ]
+}

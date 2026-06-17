@@ -1,0 +1,55 @@
+{
+  "name": "Inventory",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string"
+    },
+    "owner_username": {
+      "type": "string"
+    },
+    "item_type": {
+      "type": "string",
+      "enum": [
+        "badge",
+        "figurinha",
+        "gif",
+        "emote",
+        "gem_item",
+        "token_item"
+      ],
+      "default": "badge"
+    },
+    "item_name": {
+      "type": "string"
+    },
+    "item_description": {
+      "type": "string"
+    },
+    "item_image": {
+      "type": "string"
+    },
+    "item_rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "rare",
+        "epic",
+        "legendary"
+      ],
+      "default": "common"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 1
+    },
+    "store_item_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner_id",
+    "item_type",
+    "item_name"
+  ]
+}

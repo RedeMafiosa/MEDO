@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=DM+Serif+Text:wght@400&family=DM+Serif+Display:wght@400&family=Bebas+Neue:wght@400&family=Bungee:wght@400&family=Titan+One:wght@400&family=Permanent+Marker:wght@400&family=Rubik+Mono+One:wght@400&family=Patrick+Hand:wght@400&family=Indie+Flower:wght@400&family=Space+Mono:wght@400;700&family=Source+Code+Pro:wght@300;400;500;600;700&family=Fascinate+Inline:wght@400&family=Lilita+One:wght@400&family=Monoton:wght@400&family=Passion+One:wght@400;700&family=Lobster:wght@400&family=Abril+Fatface:wght@400&family=Righteous:wght@400&family=Pacifico:wght@400&family=Cabin:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Karla:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+4:wght@300;400;500;600;700&family=PT+Serif:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Alegreya:wght@400;500;600;700&family=Bodoni+Moda:wght@400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Overpass:wght@300;400;500;600;700&family=Urbanist:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&family=Literata:wght@300;400;500;600;700&family=Architects+Daughter:wght@400&family=Fira+Code:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Inconsolata:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600;700&family=Newsreader:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 15% 6%;
+    --foreground: 0 0% 95%;
+    --card: 250 15% 9%;
+    --card-foreground: 0 0% 95%;
+    --popover: 250 15% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 233 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 15% 14%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 250 10% 16%;
+    --muted-foreground: 250 5% 55%;
+    --accent: 270 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 250 15% 18%;
+    --input: 250 15% 14%;
+    --ring: 270 80% 60%;
+    --chart-1: 270 80% 60%;
+    --chart-2: 200 80% 55%;
+    --chart-3: 340 75% 55%;
+    --chart-4: 45 90% 55%;
+    --chart-5: 150 70% 45%;
+    --radius: 0.75rem;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 250 15% 7%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 270 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 15% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 250 15% 15%;
+    --sidebar-ring: 270 80% 60%;
+  }
+
+  .dark {
+    --background: 250 15% 6%;
+    --foreground: 0 0% 95%;
+    --card: 250 15% 9%;
+    --card-foreground: 0 0% 95%;
+    --popover: 250 15% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 15% 14%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 250 10% 16%;
+    --muted-foreground: 250 5% 55%;
+    --accent: 270 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 250 15% 18%;
+    --input: 250 15% 14%;
+    --ring: 270 80% 60%;
+    --chart-1: 270 80% 60%;
+    --chart-2: 200 80% 55%;
+    --chart-3: 340 75% 55%;
+    --chart-4: 45 90% 55%;
+    --chart-5: 150 70% 45%;
+    --sidebar-background: 250 15% 7%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 270 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 15% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 250 15% 15%;
+    --sidebar-ring: 270 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(250 15% 8%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(250 15% 20%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(270 80% 60%);
+}
+
+/* Live pulse animation */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-live-pulse {
+  animation: live-pulse 1.5s ease-in-out infinite;
+}
+
+/* Glow effect */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+}
+.glow-purple-sm {
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

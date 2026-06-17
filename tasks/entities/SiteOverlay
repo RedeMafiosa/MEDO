@@ -1,0 +1,58 @@
+{
+  "name": "SiteOverlay",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "gif",
+        "text"
+      ],
+      "default": "text"
+    },
+    "content": {
+      "type": "string",
+      "description": "URL for image/gif, or text content"
+    },
+    "pos_x": {
+      "type": "number",
+      "default": 100,
+      "description": "X position in pixels from left"
+    },
+    "pos_y": {
+      "type": "number",
+      "default": 100,
+      "description": "Y position in pixels from top"
+    },
+    "width": {
+      "type": "number",
+      "default": 200
+    },
+    "font_size": {
+      "type": "number",
+      "default": 16
+    },
+    "color": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "page": {
+      "type": "string",
+      "default": "all",
+      "description": "Page path or 'all' for every page"
+    },
+    "is_visible": {
+      "type": "boolean",
+      "default": true
+    },
+    "z_index": {
+      "type": "number",
+      "default": 100
+    }
+  },
+  "required": [
+    "type",
+    "content"
+  ]
+}

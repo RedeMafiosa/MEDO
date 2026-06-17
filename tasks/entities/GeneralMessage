@@ -1,0 +1,49 @@
+{
+  "name": "GeneralMessage",
+  "type": "object",
+  "properties": {
+    "author_id": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_avatar": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "media_url": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "gif",
+        "image"
+      ],
+      "default": "text"
+    },
+    "is_bold": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_italic": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_underline": {
+      "type": "boolean",
+      "default": false
+    },
+    "color": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "author_name",
+    "content"
+  ]
+}

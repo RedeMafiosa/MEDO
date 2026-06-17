@@ -1,0 +1,31 @@
+{
+  "name": "Wallet",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Owner user ID"
+    },
+    "username": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "number",
+      "default": 0,
+      "description": "Main currency"
+    },
+    "diamonds": {
+      "type": "number",
+      "default": 0,
+      "description": "Premium currency"
+    },
+    "gems": {
+      "type": "number",
+      "default": 0,
+      "description": "Rare currency"
+    }
+  },
+  "required": [
+    "user_id"
+  ]
+}
