@@ -1,91 +1,183 @@
-# Welcome to Your Miaoda Project
+<div align="center">
+  <h1>⚔️ GamingHub</h1>
+  <p>Plataforma gaming completa com perfis, clans, torneios, streams ao vivo e loja</p>
 
-## Project Info
+  ![React](https://img.shields.io/badge/React-18-blue?logo=react)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+  ![Supabase](https://img.shields.io/badge/Supabase-Backend-green?logo=supabase)
+  ![Tailwind](https://img.shields.io/badge/TailwindCSS-3-cyan?logo=tailwindcss)
+  ![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite)
+</div>
 
-## Project Directory
+---
 
-```
-├── README.md # Documentation
-├── components.json # Component library configuration
-├── index.html # Entry file
-├── package.json # Package management
-├── postcss.config.js # PostCSS configuration
-├── public # Static resources directory
-│   ├── favicon.png # Icon
-│   └── images # Image resources
-├── src # Source code directory
-│   ├── App.tsx # Entry file
-│   ├── components # Components directory
-│   ├── context # Context directory
-│   ├── db # Database configuration directory
-│   ├── hooks # Common hooks directory
-│   ├── index.css # Global styles
-│   ├── layout # Layout directory
-│   ├── lib # Utility library directory
-│   ├── main.tsx # Entry file
-│   ├── routes.tsx # Routing configuration
-│   ├── pages # Pages directory
-│   ├── services # Database interaction directory
-│   ├── types # Type definitions directory
-├── tsconfig.app.json # TypeScript frontend configuration file
-├── tsconfig.json # TypeScript configuration file
-├── tsconfig.node.json # TypeScript Node.js configuration file
-└── vite.config.ts # Vite configuration file
-```
+## 📋 Funcionalidades
 
-## Tech Stack
+- 🎮 **Perfis** — Avatar, banner, background, bio, tags animadas com partículas
+- 🏆 **Ranking** — Sistema de ranks por XP (Bronze → Grão-Mestre)
+- 🏷️ **Tags** — Tags admin com efeitos RGB, neon e partículas flutuantes
+- ⚔️ **Torneios** — Criação, inscrição e gestão de torneios
+- 🛡️ **Clans** — Criação, gestão e entrada em clans
+- 📡 **Streams** — Streams ao vivo com chat em tempo real
+- 🛒 **Loja** — Itens com sistema de moedas, inventário e transações
+- 🔐 **Admin** — Painel completo de gestão de tudo
 
-Vite, TypeScript, React, Supabase
+---
 
-## Development Guidelines
+## 🚀 Setup Local
 
-### How to edit code locally?
+### 1. Clonar e instalar
 
-You can choose [VSCode](https://code.visualstudio.com/Download) or any IDE you prefer. The only requirement is to have Node.js and npm installed.
-
-### Environment Requirements
-
-```
-# Node.js ≥ 20
-# npm ≥ 10
-Example:
-# node -v   # v20.18.3
-# npm -v    # 10.8.2
+```bash
+git clone https://github.com/SEU_USER/gaminghub.git
+cd gaminghub
+npm install
 ```
 
-### Installing Node.js on Windows
+### 2. Configurar variáveis de ambiente
 
-```
-# Step 1: Visit the Node.js official website: https://nodejs.org/, click download. The website will automatically suggest a suitable version (32-bit or 64-bit) for your system.
-# Step 2: Run the installer: Double-click the downloaded installer to run it.
-# Step 3: Complete the installation: Follow the installation wizard to complete the process.
-# Step 4: Verify installation: Open Command Prompt (cmd) or your IDE terminal, and type `node -v` and `npm -v` to check if Node.js and npm are installed correctly.
+```bash
+cp .env.example .env
 ```
 
-### Installing Node.js on macOS
+Edite `.env` com as credenciais do seu projeto Supabase:
 
-```
-# Step 1: Using Homebrew (Recommended method): Open Terminal. Type the command `brew install node` and press Enter. If Homebrew is not installed, you need to install it first by running the following command in Terminal:
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-Alternatively, use the official installer: Visit the Node.js official website. Download the macOS .pkg installer. Open the downloaded .pkg file and follow the prompts to complete the installation.
-# Step 2: Verify installation: Open Command Prompt (cmd) or your IDE terminal, and type `node -v` and `npm -v` to check if Node.js and npm are installed correctly.
+```env
+VITE_SUPABASE_URL=https://SEU_PROJECT_ID.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ...
 ```
 
-### After installation, follow these steps:
+### 3. Arrancar o servidor de desenvolvimento
 
-```
-# Step 1: Download the code package
-# Step 2: Extract the code package
-# Step 3: Open the code package with your IDE and navigate into the code directory
-# Step 4: In the IDE terminal, run the command to install dependencies: npm i
-# Step 5: In the IDE terminal, run the command to start the development server: npm run dev -- --host 127.0.0.1
-# Step 6: if step 5 failed, try this command to start the development server: npx vite --host 127.0.0.1
+```bash
+npm run dev
 ```
 
-### How to develop backend services?
+Abra [http://localhost:5173](http://localhost:5173)
 
-Configure environment variables and install relevant dependencies.If you need to use a database, please use the official version of Supabase.
+---
 
-## Learn More
+## 🗄️ Configurar a Base de Dados (Supabase)
 
-You can also check the help documentation: Download and Building the app（ [https://intl.cloud.baidu.com/en/doc/MIAODA/s/download-and-building-the-app-en](https://intl.cloud.baidu.com/en/doc/MIAODA/s/download-and-building-the-app-en)）to learn more detailed content.
+### Opção A — Schema completo (recomendado para nova instância)
+
+1. Crie um projeto em [supabase.com](https://supabase.com)
+2. Vá a **SQL Editor**
+3. Cole o conteúdo de `supabase/schema.sql`
+4. Clique em **Run**
+
+✅ Todas as tabelas, políticas RLS, triggers e seed data serão criados automaticamente.
+
+### Opção B — Ligar ao projeto Supabase existente
+
+Se já tem o projeto Supabase configurado (ex: migrado do medo.dev), basta apontar as env vars para esse projeto. A base de dados já está na cloud e não precisa de ser recriada.
+
+---
+
+## 📦 Deploy no Vercel (recomendado)
+
+### Deploy manual
+
+1. Faça push do código para o GitHub
+2. Aceda a [vercel.com](https://vercel.com) → **New Project**
+3. Importe o repositório GitHub
+4. Adicione as **Environment Variables**:
+
+| Variável | Valor |
+|---|---|
+| `VITE_SUPABASE_URL` | URL do projeto Supabase |
+| `VITE_SUPABASE_ANON_KEY` | Chave anon pública |
+
+5. Clique **Deploy** ✅
+
+### Deploy automático via GitHub Actions
+
+O ficheiro `.github/workflows/deploy.yml` faz deploy automático em cada push para `main`.
+
+Configure estes **Secrets** no repositório GitHub (`Settings → Secrets → Actions`):
+
+| Secret | Onde obter |
+|---|---|
+| `VITE_SUPABASE_URL` | Supabase → Settings → API |
+| `VITE_SUPABASE_ANON_KEY` | Supabase → Settings → API |
+| `VERCEL_TOKEN` | [vercel.com/account/tokens](https://vercel.com/account/tokens) |
+| `VERCEL_ORG_ID` | `vercel env pull` ou dashboard Vercel |
+| `VERCEL_PROJECT_ID` | `vercel env pull` ou dashboard Vercel |
+
+---
+
+## 🌐 Deploy no Netlify (alternativa)
+
+1. Faça push para GitHub
+2. Aceda a [app.netlify.com](https://app.netlify.com) → **New site from Git**
+3. Selecione o repositório
+4. Build command: `npm run build`
+5. Publish directory: `dist`
+6. Adicione as env vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
+7. Deploy ✅
+
+> O ficheiro `public/_redirects` já está configurado para React Router SPA.
+
+---
+
+## 🔑 Criar primeiro utilizador Admin
+
+Após o deploy:
+
+1. Registe-se normalmente no site
+2. Aceda ao **Supabase Dashboard → Table Editor → profiles**
+3. Encontre o seu utilizador e altere `role` de `user` para `admin`
+4. Refresque a página — terá acesso ao painel Admin
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+gaminghub/
+├── .github/workflows/     # CI/CD GitHub Actions
+├── public/                # Assets estáticos + _redirects Netlify
+├── src/
+│   ├── components/
+│   │   ├── layouts/       # AppLayout, AdminLayout, Navbar
+│   │   └── ui/            # shadcn/ui + MemberTag, etc.
+│   ├── contexts/          # AuthContext
+│   ├── db/                # Cliente Supabase
+│   ├── hooks/             # useImageUpload, etc.
+│   ├── pages/
+│   │   ├── admin/         # Painel de administração
+│   │   └── ...            # Páginas públicas
+│   ├── services/          # api.ts — todas as chamadas Supabase
+│   ├── types/             # TypeScript interfaces
+│   └── routes.tsx         # Definição de rotas
+├── supabase/
+│   └── schema.sql         # Schema completo da BD
+├── .env.example           # Template de variáveis de ambiente
+├── vercel.json            # Configuração Vercel SPA routing
+└── vite.config.ts
+```
+
+---
+
+## 🛠️ Stack Tecnológica
+
+| Camada | Tecnologia |
+|---|---|
+| Frontend | React 18 + TypeScript + Vite |
+| Estilos | Tailwind CSS + shadcn/ui |
+| Backend | Supabase (PostgreSQL + Auth + Storage + Realtime) |
+| Deploy | Vercel / Netlify |
+| CI/CD | GitHub Actions |
+
+---
+
+## ❓ Perguntas Frequentes
+
+**Posso usar a base de dados do medo.dev no GitHub?**
+A base de dados fica sempre no Supabase cloud. O que vai para o GitHub é apenas o código e o `schema.sql` para recriar a estrutura. Os dados dos utilizadores ficam protegidos no Supabase.
+
+**Como exportar os dados reais?**
+No Supabase Dashboard → **Database → Backups** pode fazer download de um backup completo com todos os dados.
+
+**Posso ter o site e a BD de graça?**
+Sim! Supabase free tier + Vercel free tier cobrem projetos pequenos/médios sem custo.
