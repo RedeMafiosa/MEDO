@@ -80,11 +80,11 @@ export function Navbar() {
                       {profile.username?.[0]?.toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
+                  {isAdmin && <MemberTag variant="admin" label="Admin" size="sm" className="hidden md:inline-flex" />}
                   <div className="hidden md:block text-left min-w-0">
                     <p className="text-xs font-medium truncate max-w-24">{profile.username}</p>
                     <p className="text-xs text-muted-foreground font-mono">{profile.coins} 🪙</p>
                   </div>
-                  {isAdmin && <MemberTag variant="admin" label="Admin" size="sm" className="hidden md:inline-flex" />}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">

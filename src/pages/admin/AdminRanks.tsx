@@ -9,7 +9,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
-import { Medal, Plus, Edit2, Trash2, Loader2 } from 'lucide-react';
+import { Medal, Plus, Edit2, Trash2, Loader2, Tag } from 'lucide-react';
+import { MemberTag } from '@/components/ui/member-tag';
 
 const EMPTY: Omit<Rank, 'id' | 'created_at'> = { name: '', icon: '⭐', color: '#CCFF00', min_xp: 0, sort_order: 0 };
 
@@ -124,6 +125,49 @@ export default function AdminRanks() {
           </table>
         </div>
       )}
+
+      {/* ── Tags de Administração ─────────────────────────────────────────── */}
+      <div className="mt-10">
+        <h2 className="text-lg font-black uppercase tracking-wider flex items-center gap-2 mb-5">
+          <Tag className="h-5 w-5 text-primary" /> Tags de Membros
+        </h2>
+
+        {/* Staff tags */}
+        <div className="border border-border bg-card p-5 mb-4">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold mb-4">Equipe / Administração</p>
+          <div className="flex flex-wrap gap-4">
+            {[
+              { variant: 'fundador' as const, label: 'Fundador',   desc: 'Criador da plataforma' },
+              { variant: 'dono'     as const, label: 'Dono',        desc: 'Proprietário' },
+              { variant: 'admin'    as const, label: 'Admin',       desc: 'Administrador' },
+              { variant: 'moderador' as const, label: 'Moderador', desc: 'Moderador de conteúdo' },
+            ].map(({ variant, label, desc }) => (
+              <div key={variant} className="flex flex-col items-start gap-1.5">
+                <MemberTag variant={variant} label={label} />
+                <span className="text-xs text-muted-foreground">{desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Special tags */}
+        <div className="border border-border bg-card p-5">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold mb-4">Tags Especiais</p>
+          <div className="flex flex-wrap gap-4">
+            {[
+              { variant: 'vip'      as const, label: 'VIP',        desc: 'Membro VIP' },
+              { variant: 'booster'  as const, label: 'Booster',    desc: 'Impulsionou o servidor' },
+              { variant: 'og'       as const, label: 'Membro OG',  desc: 'Membro original' },
+              { variant: 'streamer' as const, label: 'Streamer',   desc: 'Transmite ao vivo' },
+            ].map(({ variant, label, desc }) => (
+              <div key={variant} className="flex flex-col items-start gap-1.5">
+                <MemberTag variant={variant} label={label} />
+                <span className="text-xs text-muted-foreground">{desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <Dialog open={dialog.open} onOpenChange={open => !open && setDialog({ open: false, rank: null })}>
         <DialogContent className="max-w-[calc(100%-2rem)] md:max-w-lg bg-card border-border">

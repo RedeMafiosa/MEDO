@@ -301,13 +301,13 @@ export default function ProfilePage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <h1 className="text-xl md:text-2xl font-black text-balance">{profile.username || 'Jogador'}</h1>
                           {profile.role === 'admin' && (
                             <MemberTag variant="admin" label="Admin" size="sm" />
                           )}
                           {profile.rank && (
                             <MemberTag variant="rank" label={`${profile.rank.icon ?? ''} ${profile.rank.name}`.trim()} color={profile.rank.color} size="sm" />
                           )}
+                          <h1 className="text-xl md:text-2xl font-black text-balance">{profile.username || 'Jogador'}</h1>
                         </div>
                         <p className="text-xs text-muted-foreground font-mono mb-1">
                           ID: {profile.id.slice(0, 8)}...

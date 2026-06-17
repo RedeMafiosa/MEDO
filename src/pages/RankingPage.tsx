@@ -70,7 +70,6 @@ export default function RankingPage() {
                   <tr className="border-b border-border bg-secondary">
                     <th className="text-left text-xs text-muted-foreground font-medium py-3 px-4 whitespace-nowrap">#</th>
                     <th className="text-left text-xs text-muted-foreground font-medium py-3 px-4 whitespace-nowrap">Jogador</th>
-                    <th className="text-left text-xs text-muted-foreground font-medium py-3 px-4 whitespace-nowrap">Rank</th>
                     <th className="text-right text-xs text-muted-foreground font-medium py-3 px-4 whitespace-nowrap">XP</th>
                     <th className="text-right text-xs text-muted-foreground font-medium py-3 px-4 whitespace-nowrap">Moedas</th>
                   </tr>
@@ -90,16 +89,14 @@ export default function RankingPage() {
                               {p.username?.[0]?.toUpperCase() || 'U'}
                             </AvatarFallback>
                           </Avatar>
+                          {p.role === 'admin' && (
+                            <MemberTag variant="admin" label="Admin" size="sm" />
+                          )}
+                          {p.rank && (
+                            <MemberTag variant="rank" label={`${p.rank.icon ?? ''} ${p.rank.name}`.trim()} color={p.rank.color} size="sm" />
+                          )}
                           <span className="text-sm font-medium">{p.username || 'Jogador'}</span>
                         </Link>
-                      </td>
-                      <td className="py-3 px-4 whitespace-nowrap">
-                        {p.rank ? (
-                          <MemberTag variant="rank" label={`${p.rank.icon ?? ''} ${p.rank.name}`.trim()} color={p.rank.color} size="sm" />
-                        ) : <span className="text-xs text-muted-foreground">—</span>}
-                        {p.role === 'admin' && (
-                          <MemberTag variant="admin" label="Admin" size="sm" className="ml-1.5" />
-                        )}
                       </td>
                       <td className="py-3 px-4 text-right whitespace-nowrap">
                         <span className="text-sm font-bold stat-mono text-primary flex items-center justify-end gap-1">
