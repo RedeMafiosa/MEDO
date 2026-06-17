@@ -185,7 +185,38 @@
     animation: red-neon 2s ease-in-out infinite;
   }
 
-  /* Green neon — Streamer tag */
+  /* ── Floating particle hover effects for admin tags ─────────────────── */
+
+  /* Individual particle float-up animation */
+  @keyframes particle-float {
+    0%   { transform: translate(var(--px), 0px) scale(1); opacity: 1; }
+    60%  { opacity: 0.8; }
+    100% { transform: translate(var(--px), -38px) scale(0.5); opacity: 0; }
+  }
+
+  /* Base particle element */
+  .tag-particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 11px;
+    line-height: 1;
+    animation: particle-float 1.1s ease-out forwards;
+    z-index: 20;
+    bottom: 100%;
+    left: 50%;
+  }
+
+  /* Particle wrapper — sits on the tag element */
+  .tag-has-particles {
+    position: relative;
+    overflow: visible;
+  }
+  .tag-has-particles .tag-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
   @keyframes green-neon {
     0%, 100% { box-shadow: 0 0 5px 1px #00ff8855; border-color: #00ff88; }
     50%       { box-shadow: 0 0 14px 3px #00ff8877; border-color: #00ffaa; }

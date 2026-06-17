@@ -35,6 +35,17 @@ export interface Rank {
   created_at: string;
 }
 
+export interface MemberTagRecord {
+  id: string;
+  name: string;
+  variant: string;
+  icon: string;
+  description: string | null;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
 export interface Clan {
   id: string;
   name: string;

@@ -14,6 +14,7 @@ import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminRanks from './pages/admin/AdminRanks';
+import AdminTags from './pages/admin/AdminTags';
 import AdminTournaments from './pages/admin/AdminTournaments';
 import AdminClans from './pages/admin/AdminClans';
 import AdminStore from './pages/admin/AdminStore';
@@ -44,6 +45,7 @@ export const routes: RouteConfig[] = [
   { name: 'Admin Dashboard', path: '/admin', element: <AdminDashboard /> },
   { name: 'Admin Usuários', path: '/admin/users', element: <AdminUsers /> },
   { name: 'Admin Ranks', path: '/admin/ranks', element: <AdminRanks /> },
+  { name: 'Admin Tags',  path: '/admin/tags',  element: <AdminTags /> },
   { name: 'Admin Torneios', path: '/admin/tournaments', element: <AdminTournaments /> },
   { name: 'Admin Clans', path: '/admin/clans', element: <AdminClans /> },
   { name: 'Admin Loja', path: '/admin/store', element: <AdminStore /> },

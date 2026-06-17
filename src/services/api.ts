@@ -1,5 +1,5 @@
 import { supabase } from '@/db/supabase';
-import type { Profile, Rank, Clan, Tournament, TournamentRegistration, Stream, StreamMessage, StoreItem, InventoryItem, Transaction } from '@/types/index';
+import type { Profile, Rank, MemberTagRecord, Clan, Tournament, TournamentRegistration, Stream, StreamMessage, StoreItem, InventoryItem, Transaction } from '@/types/index';
 
 // ============ PROFILES ============
 export const profilesApi = {
@@ -41,6 +41,29 @@ export const ranksApi = {
   },
   delete: async (id: string): Promise<void> => {
     await supabase.from('ranks').delete().eq('id', id);
+  },
+};
+
+// ============ MEMBER TAGS ============
+export const tagsApi = {
+  getAll: async (): Promise<MemberTagRecord[]> => {
+    const { data } = await supabase.from('member_tags').select('*').order('sort_order');
+    return Array.isArray(data) ? data : [];
+  },
+  getActive: async (): Promise<MemberTagRecord[]> => {
+    const { data } = await supabase.from('member_tags').select('*').eq('is_active', true).order('sort_order');
+    return Array.isArray(data) ? data : [];
+  },
+  create: async (tag: Omit<MemberTagRecord, 'id' | 'created_at'>): Promise<MemberTagRecord | null> => {
+    const { data } = await supabase.from('member_tags').insert(tag).select().maybeSingle();
+    return data;
+  },
+  update: async (id: string, updates: Partial<MemberTagRecord>): Promise<MemberTagRecord | null> => {
+    const { data } = await supabase.from('member_tags').update(updates).eq('id', id).select().maybeSingle();
+    return data;
+  },
+  delete: async (id: string): Promise<void> => {
+    await supabase.from('member_tags').delete().eq('id', id);
   },
 };
 

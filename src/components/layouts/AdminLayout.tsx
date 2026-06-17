@@ -3,17 +3,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Swords, LayoutDashboard, Users, Medal, Trophy, Shield, ShoppingBag, Radio, Settings, Menu, ChevronLeft, LogOut } from 'lucide-react';
+import { Swords, LayoutDashboard, Users, Medal, Trophy, Shield, ShoppingBag, Radio, Settings, Menu, ChevronLeft, LogOut, Tag } from 'lucide-react';
 
 const adminLinks = [
-  { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-  { label: 'Usuários', href: '/admin/users', icon: Users },
-  { label: 'Ranks', href: '/admin/ranks', icon: Medal },
-  { label: 'Torneios', href: '/admin/tournaments', icon: Trophy },
-  { label: 'Clans', href: '/admin/clans', icon: Shield },
-  { label: 'Loja', href: '/admin/store', icon: ShoppingBag },
-  { label: 'Streams', href: '/admin/streams', icon: Radio },
-  { label: 'Configurações', href: '/admin/settings', icon: Settings },
+  { label: 'Dashboard',     href: '/admin',            icon: LayoutDashboard },
+  { label: 'Usuários',      href: '/admin/users',       icon: Users },
+  { label: 'Ranks',         href: '/admin/ranks',       icon: Medal },
+  { label: 'Tags',          href: '/admin/tags',        icon: Tag },
+  { label: 'Torneios',      href: '/admin/tournaments', icon: Trophy },
+  { label: 'Clans',         href: '/admin/clans',       icon: Shield },
+  { label: 'Loja',          href: '/admin/store',       icon: ShoppingBag },
+  { label: 'Streams',       href: '/admin/streams',     icon: Radio },
+  { label: 'Configurações', href: '/admin/settings',    icon: Settings },
 ];
 
 function SidebarContent({ onClose }: { onClose?: () => void }) {
