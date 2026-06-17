@@ -1,4 +1,4 @@
-import { useState, useCallback, type ReactNode } from 'react';
+import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { Crown, Shield, Star, Zap, Radio, Flame, Swords, Award } from 'lucide-react';
 
 export type TagVariant =
@@ -31,11 +31,6 @@ const PARTICLES: Partial<Record<TagVariant, string[]>> = {
   moderador: ['⚔️','🗡️','🔱','⚔️','🛡️','⚡'],
 };
 
-// Spread positions: x offset in px for each particle
-const SPREADS = [-22, -12, -4, 4, 12, 22];
-// Stagger delays in ms
-const DELAYS = [0, 80, 160, 40, 120, 200];
-
 interface Particle { id: number; emoji: string; x: number; delay: number }
 
 // Base wrapper styles shared by all tags
@@ -66,6 +61,45 @@ const CONFIGS: Record<
 
 let _pid = 0;
 
+/** Continuously spawns floating particles for admin tag variants */
+function useParticleLoop(emojis: string[] | undefined) {
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (!emojis) return;
+
+    const spawn = () => {
+      // Pick 2–3 random particles per burst
+      const count = 2 + Math.floor(Math.random() * 2);
+      const batch: Particle[] = Array.from({ length: count }, () => {
+        const idx = Math.floor(Math.random() * emojis.length);
+        const x = -24 + Math.random() * 48; // –24..+24 px
+        return { id: ++_pid, emoji: emojis[idx], x, delay: Math.random() * 120 };
+      });
+      setParticles(prev => [...prev, ...batch]);
+
+      // Remove these specific particles after animation completes
+      const ids = batch.map(p => p.id);
+      setTimeout(() => {
+        setParticles(prev => prev.filter(p => !ids.includes(p.id)));
+      }, 1400);
+
+      // Schedule next burst: every 550–900 ms
+      timerRef.current = setTimeout(spawn, 550 + Math.random() * 350);
+    };
+
+    // Stagger initial start slightly so multiple tags on screen don't sync
+    timerRef.current = setTimeout(spawn, Math.random() * 400);
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [emojis]);
+
+  return particles;
+}
+
 export function MemberTag({
   variant,
   label,
@@ -78,20 +112,8 @@ export function MemberTag({
   const usedIcon = icon ?? cfg.icon;
   const particleEmojis = PARTICLES[variant];
 
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  const spawnParticles = useCallback(() => {
-    if (!particleEmojis) return;
-    const batch: Particle[] = SPREADS.map((x, i) => ({
-      id: ++_pid,
-      emoji: particleEmojis[i % particleEmojis.length],
-      x,
-      delay: DELAYS[i],
-    }));
-    setParticles(batch);
-    // Clear after longest animation (delay 200 + duration 1100 = 1300ms)
-    setTimeout(() => setParticles([]), 1400);
-  }, [particleEmojis]);
+  // Always-running particle loop for admin variants
+  const particles = useParticleLoop(particleEmojis);
 
   const inlineStyle =
     variant === 'rank' && color
@@ -100,11 +122,10 @@ export function MemberTag({
 
   return (
     <span
-      className={`${BASE} ${SIZE[size]} ${cfg.wrapperClass} ${particleEmojis ? 'tag-has-particles cursor-pointer' : ''} ${className}`}
+      className={`${BASE} ${SIZE[size]} ${cfg.wrapperClass} ${particleEmojis ? 'tag-has-particles' : ''} ${className}`}
       style={inlineStyle}
-      onMouseEnter={spawnParticles}
     >
-      {/* Floating particles */}
+      {/* Always-floating particles */}
       {particleEmojis && particles.length > 0 && (
         <span className="tag-particles" aria-hidden="true">
           {particles.map(p => (
